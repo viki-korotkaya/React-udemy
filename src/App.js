@@ -1,28 +1,109 @@
 import React, { Component } from 'react';
+// import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      {name: "Ana", age: 29}, 
+      {name: "Hana", age: 33},
+      {name: "Sacha", age: 22}
+    ]
+  }
+
+  switchNameHandler = (newName)=>{
+    this.setState({
+      persons: [
+      {name: newName, age: 29}, 
+      {name: "Hana", age: 33},
+      {name: "Sacha", age: 32}
+      ]
+    })
+  }
+
+  nameChangeHandler = (event) => {
+    this.setState({
+      persons: [
+      {name: "Ana", age: 29}, 
+      {name: event.target.value, age: 33},
+      {name: "Sacha", age: 32}
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Hi, I'm react app</h1>
+        <p>This is really working</p>
+        <button onClick={this.switchNameHandler.bind(this, 'Annushka')}>Swith name</button>
+        <Person 
+          name = {this.state.persons[0].name} 
+          age = {this.state.persons[0].age} 
+          
+         />
+        <Person 
+          name = {this.state.persons[1].name} 
+          age = {this.state.persons[1].age}
+          changed = {this.nameChangeHandler}
+        >
+          Hobby is cars
+        </Person>
+        <Person 
+          name = {this.state.persons[2].name}
+          age = {this.state.persons[2].age}
+          click = {this.switchNameHandler.bind(this, 'Anka')} 
+         />
       </div>
     );
+    return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does it work?'))
   }
 }
 
 export default App;
+
+// const app = props => {
+//   const [personState, setPersonState] = useState(
+//       {
+//         persons: [
+//           {name: "Ana", age: 29}, 
+//           {name: "Hana", age: 33},
+//           {name: "Sacha", age: 22}
+//         ]
+//       }
+//     );
+//   console.log(setPersonState);
+
+//   const switchNameHandler = ()=>{
+//     setPersonState({
+//         persons: [
+//             {name: "Anka", age: 29}, 
+//             {name: "Hana", age: 33},
+//             {name: "Sacha", age: 32}
+//         ]
+//       })
+//   }; 
+//   return (
+//       <div className="App">
+//         <h1>Hi, I'm react app</h1>
+//         <p>This is really working</p>
+//         <button onClick={switchNameHandler}>Swith name</button>
+//         <Person 
+//           name = {personState.persons[0].name} 
+//           age = {personState.persons[0].age}
+//         />
+//         <Person 
+//           name = {personState.persons[1].name} 
+//           age = {personState.persons[1].age}
+//         >Hobby is cars</Person>
+//         <Person 
+//           name = {personState.persons[2].name} 
+//           age = {personState.persons[2].age}
+//           click={switchNameHandler} />
+//       </div>
+//     );
+// };
+
+// export default app; 
