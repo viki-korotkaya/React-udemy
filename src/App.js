@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 // import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -45,7 +46,11 @@ class App extends Component {
       color: 'white',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     }
     let persons = null;
     if (this.state.showPersons){
@@ -62,7 +67,11 @@ class App extends Component {
               
           </div> 
       );
-      style.backgroundColor = 'red';
+      style.backgroundColor = 'red'; 
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
     }
 
     let classes = [];
@@ -94,7 +103,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
 
 // const app = props => {
 //   const [personState, setPersonState] = useState(
