@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Radium, {StyleRoot} from 'radium';
 // import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -47,10 +46,7 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      ':hover': {
-        backgroundColor: "lightgreen",
-        color: "black"
-      }
+      
     }
     let persons = null;
     if (this.state.showPersons){
@@ -68,10 +64,7 @@ class App extends Component {
           </div> 
       );
       style.backgroundColor = 'red'; 
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+      
     }
 
     let classes = [];
@@ -85,7 +78,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      
       <div className="App">
         <h1>Hi, I'm react app</h1>
         <p className = {classes.join(' ')}>This is really working</p>
@@ -98,14 +91,14 @@ class App extends Component {
           
         
       </div>
-      </StyleRoot>
+      
         
     );
     return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does it work?'))
   }
 }
 
-export default Radium(App);
+export default App;
 
 // const app = props => {
 //   const [personState, setPersonState] = useState(
