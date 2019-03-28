@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 // import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -85,6 +85,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I'm react app</h1>
         <p className = {classes.join(' ')}>This is really working</p>
@@ -97,6 +98,7 @@ class App extends Component {
           
         
       </div>
+      </StyleRoot>
         
     );
     return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does it work?'))
