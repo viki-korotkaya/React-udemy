@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Auxiliary from '../hoc/Auxiliary';
 
 class App extends Component {
   constructor(props){
@@ -77,7 +78,7 @@ class App extends Component {
 
     return (
       
-      <WithClass classes={classes.App}>
+      <Auxiliary>
       <button onClick = {() => this.setState({showCockpit: false})}>Remove Cockpit</button>
       {this.state.showCockpit ? (<Cockpit 
           showPersons={this.state.showPersons}
@@ -86,7 +87,7 @@ class App extends Component {
           persons = {this.state.persons} />) : null}
         
         {persons}
-      </WithClass>
+      </Auxiliary>
       
         
     );
@@ -94,7 +95,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
 
 // const app = props => {
 //   const [personState, setPersonState] = useState(
